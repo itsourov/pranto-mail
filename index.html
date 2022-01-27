@@ -14,14 +14,7 @@
     <button onclick="processCsv()">Submit</button>
     <br> <br><br><br><br>
     <table border="1" id="myTable">
-        <tr>
-            <th>no</th>
-            <th>name</th>
-            <th>email</th>
-            <th>Zodiac sign</th>
-            <th>category</th>
-            <th>how long(only for phone call)</th>
-        </tr>
+      
     </table>
 
 
@@ -39,6 +32,16 @@
                 console.log(jsonData);
 
                 var table = document.getElementById("myTable");
+
+                table.innerHTML ="";
+
+                var firstRow = table.insertRow(0);
+                firstRow.insertCell(0).innerHTML ="no";
+                firstRow.insertCell(0).innerHTML ="name";
+                firstRow.insertCell(0).innerHTML ="email";
+                firstRow.insertCell(0).innerHTML ="Zodiac sig";
+                firstRow.insertCell(0).innerHTML ="category";
+                firstRow.insertCell(0).innerHTML ="how long(only for phone call)";
 
                 jsonData.forEach(function (value, i) {
                     var row = table.insertRow(i + 1);
