@@ -1,12 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fetch data 24</title>
+    <title>fetch data </title>
 </head>
+
 <body>
-    
+
+    <input type="file" id="csvSelector">
+    <button onclick="processCsv()">Submit</button>
+    <br> <br><br><br><br>
+    <table border="1" id="myTable"> 
+<tr>
+    <th>no</th>
+    <th>name</th>
+    <th>email</th>
+    <th>Zodiac sign</th>
+</tr>
+    </table>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        function processCsv() {
+            var csvFile = document.getElementById('csvSelector');
+
+            var reader = new FileReader();
+            reader.onload = function () {
+var jsonData = JSON.parse(CSV2JSON(reader.result));
+console.log(jsonData);
+
+var table = document.getElementById("myTable");
+
+jsonData.forEach(function (value, i) {
+    var row = table.insertRow(i+1);
+   
+  var noCell = row.insertCell(0);
+  noCell.innerHTML = i+1;
+
+  var nameCell = row.insertCell(1);
+  nameCell.innerHTML = value['Preferred Name to address you by'];
+
+  var emailCell = row.insertCell(2);
+  emailCell.innerHTML = value['Email address'];
+
+  var zodicCell = row.insertCell(3);
+  zodicCell.innerHTML = value['Whatâs your Zodiac sign?'];
+
+  console.log(value['How would you like to communicate with me? (Choose one)'])
+
+
+  if (value['How would you like to communicate with me? (Choose one)']) {
+      
+  }
+});
+
+            };
+            // start reading the file. When it is done, calls the onload event defined above.
+            reader.readAsBinaryString(csvFile.files[0]);
+
+
+        }
+
+
+        function CSVToArray(strData, strDelimiter) {
+            // Check to see if the delimiter is defined. If not,
+            // then default to comma.
+            strDelimiter = (strDelimiter || ",");
+            // Create a regular expression to parse the CSV values.
+            var objPattern = new RegExp((
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
+            // Create an array to hold our data. Give the array
+            // a default empty first row.
+            var arrData = [[]];
+            // Create an array to hold our individual pattern
+            // matching groups.
+            var arrMatches = null;
+            // Keep looping over the regular expression matches
+            // until we can no longer find a match.
+            while (arrMatches = objPattern.exec(strData)) {
+                // Get the delimiter that was found.
+                var strMatchedDelimiter = arrMatches[1];
+                // Check to see if the given delimiter has a length
+                // (is not the start of string) and if it matches
+                // field delimiter. If id does not, then we know
+                // that this delimiter is a row delimiter.
+                if (strMatchedDelimiter.length && (strMatchedDelimiter != strDelimiter)) {
+                    // Since we have reached a new row of data,
+                    // add an empty row to our data array.
+                    arrData.push([]);
+                }
+                // Now that we have our delimiter out of the way,
+                // let's check to see which kind of value we
+                // captured (quoted or unquoted).
+                if (arrMatches[2]) {
+                    // We found a quoted value. When we capture
+                    // this value, unescape any double quotes.
+                    var strMatchedValue = arrMatches[2].replace(
+                        new RegExp("\"\"", "g"), "\"");
+                } else {
+                    // We found a non-quoted value.
+                    var strMatchedValue = arrMatches[3];
+                }
+                // Now that we have our value string, let's add
+                // it to the data array.
+                arrData[arrData.length - 1].push(strMatchedValue);
+            }
+            // Return the parsed data.
+            return (arrData);
+        }
+
+
+
+        function CSV2JSON(csv) {
+            var array = CSVToArray(csv);
+            var objArray = [];
+            for (var i = 1; i < array.length; i++) {
+                objArray[i - 1] = {};
+                for (var k = 0; k < array[0].length && k < array[i].length; k++) {
+                    var key = array[0][k];
+                    objArray[i - 1][key] = array[i][k]
+                }
+            }
+
+            var json = JSON.stringify(objArray);
+            var str = json.replace(/},/g, "},\r\n");
+
+            return str;
+        }
+
+    </script>
 </body>
+
 </html>
