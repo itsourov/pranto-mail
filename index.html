@@ -37,11 +37,11 @@
 
                 var firstRow = table.insertRow(0);
                 firstRow.insertCell(0).innerHTML ="no";
-                firstRow.insertCell(0).innerHTML ="name";
-                firstRow.insertCell(0).innerHTML ="email";
-                firstRow.insertCell(0).innerHTML ="Zodiac sig";
-                firstRow.insertCell(0).innerHTML ="category";
-                firstRow.insertCell(0).innerHTML ="how long(only for phone call)";
+                firstRow.insertCell(1).innerHTML ="name";
+                firstRow.insertCell(2).innerHTML ="email";
+                firstRow.insertCell(3).innerHTML ="Zodiac sig";
+                firstRow.insertCell(4).innerHTML ="category";
+                firstRow.insertCell(5).innerHTML ="how long(only for phone call)";
 
                 jsonData.forEach(function (value, i) {
                     var row = table.insertRow(i + 1);
