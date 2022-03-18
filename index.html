@@ -74,7 +74,7 @@
                             howLongCell.innerHTML = "30 minit dhore ";
 
                             var previewCell = row.insertCell(6);
-                            previewCell.innerHTML = "<a href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=phone&money=30'>preview mail</a>";
+                            previewCell.innerHTML = "<a target='_blank' href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=phone&money=30'>preview mail</a>";
 
 
                         } else if (value['How long do you want to communicate with me?'].includes("20 minutes")) {
@@ -82,14 +82,14 @@
                             howLongCell.innerHTML = "20 minit dhore ";
 
                             var previewCell = row.insertCell(6);
-                            previewCell.innerHTML = "<a href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=phone&money=20'>preview mail</a>";
+                            previewCell.innerHTML = "<a target='_blank' href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=phone&money=20'>preview mail</a>";
 
                         } else if (value['How long do you want to communicate with me?'].includes("60 minutes")) {
                             var howLongCell = row.insertCell(5);
                             howLongCell.innerHTML = "60 minit dhore ";
 
                             var previewCell = row.insertCell(6);
-                            previewCell.innerHTML = "<a href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=phone&money=60'>preview mail</a>";
+                            previewCell.innerHTML = "<a target='_blank' href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=phone&money=60'>preview mail</a>";
 
                         }
                     } else if (value['How would you like to communicate with me? (Choose one)'].includes("Explaining your Birth-chart")) {
@@ -100,7 +100,7 @@
                         howLongCell.innerHTML = "not applicable";
 
                         var previewCell = row.insertCell(6);
-                        previewCell.innerHTML = "<a href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=birth'>preview mail</a>";
+                        previewCell.innerHTML = "<a target='_blank' href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=birth'>preview mail</a>";
 
                     } else if (value['How would you like to communicate with me? (Choose one)'].includes("VIDEO RESPONSE")) {
                         var zodicCell = row.insertCell(4);
@@ -110,7 +110,7 @@
                         howLongCell.innerHTML = "not applicable";
 
                         var previewCell = row.insertCell(6);
-                        previewCell.innerHTML = "<a href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=video'>preview mail</a>";
+                        previewCell.innerHTML = "<a target='_blank' href='mail-preview.php?to=" + tomail + "&name=" + name + "&sign=" + sign + "&cat=video'>preview mail</a>";
 
                     }
                 });
