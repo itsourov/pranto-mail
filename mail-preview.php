@@ -1,8 +1,24 @@
+<style>
+  .big-button {
+  display: block;
+  width: 100%;
+  
+  border: none;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 28px;
+  font-size: 200%;
+  cursor: pointer;
+  text-align: center;
+}
+
+</style>
 <?php
 
-echo "to: ".$_GET['to'];
-echo "<br>from: client er mail";
-echo "<br>subject: Hi ".$_GET['name']. ", ". $_GET['sign'];
+
+
+$to = $_GET['to'];
+$subject = "Hi ".$_GET['name']. ", ". $_GET['sign'];
 
 if ($_GET['cat']=="video") {
  $msg = 'Hey there it\'s Mari! I want to personally thank you for trusting me and confiding in me with your question/questions! I promise to be as unbiased and honest as I usually am on TikTok. So you will send 25$ to my Venmo - Username is Wh0rescope Or send it to my Cashapp username is $Wh0rescope
@@ -21,7 +37,34 @@ if ($_GET['cat']=="video") {
 
 }
 
-echo "<br> massage body: ". $msg;
+echo '<a class="big-button" href="mailto:'.$to.'?subject='.$subject.'&body='.$msg.'">Email send!</a>';
 
 
 ?>
+<br>
+<table border="1">
+<tr>
+  <td>
+to:
+  </td>
+  <td>
+    <?php echo $to; ?>
+  </td>
+</tr>
+<tr>
+  <td>
+Subject:
+  </td>
+  <td>
+    <?php echo $subject; ?>
+  </td>
+</tr>
+<tr>
+  <td>
+body:
+  </td>
+  <td>
+    <?php echo $msg; ?>
+  </td>
+</tr>
+</table>
